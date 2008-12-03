@@ -37,7 +37,7 @@
 
 namespace Stagehand;
 
-// {{{ Stagehand::AttributeHolder
+// {{{ Stagehand\AttributeHolder
 
 /**
  * An attributes holder for any purpose.
@@ -48,7 +48,7 @@ namespace Stagehand;
  * @version    Release: @package_version@
  * @since      Class available since Release 0.1.0
  */
-class AttributeHolder
+abstract class AttributeHolder
 {
 
     // {{{ properties
@@ -82,16 +82,16 @@ class AttributeHolder
 
     /**
      * Sets an attribute for the object.
-     * If the object has a specific setter method then uses that.
+     * If the object has the setter method for the attribute then use it.
      *
      * @param string $name
      * @param mixed  $value
      */
     public function __set($name, $value)
     {
-        $setterMethodName = 'set' . ucfirst($name);
-        if (method_exists($this, $setterMethodName)) {
-            return call_user_func(array($this, $setterMethodName), $value);
+        if (method_exists($this, "set$name")) {
+            $this->{ "set$name" }($value);
+            return;
         }
 
         $this->setAttribute($name, $value);
@@ -102,16 +102,15 @@ class AttributeHolder
 
     /**
      * Gets an attribute for the object.
-     * If the object has a specific getter method then uses that.
+     * If the object has the getter method for the attribute then use it.
      *
      * @param string $name
      * @return mixed
      */
     public function __get($name)
     {
-        $getterMethodName = 'get' . ucfirst($name);
-        if (method_exists($this, $getterMethodName)) {
-            return call_user_func(array($this, $getterMethodName));
+        if (method_exists($this, "get$name")) {
+            return $this->{ "get$name" }();
         }
 
         return $this->getAttribute($name);
