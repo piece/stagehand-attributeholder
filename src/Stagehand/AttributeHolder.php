@@ -82,7 +82,7 @@ abstract class AttributeHolder
 
     /**
      * Sets an attribute for the object.
-     * If the object has the setter method for the attribute then use it.
+     * If the object has the setter method for the attribute then it is used.
      *
      * @param string $name
      * @param mixed  $value
@@ -102,7 +102,7 @@ abstract class AttributeHolder
 
     /**
      * Gets an attribute for the object.
-     * If the object has the getter method for the attribute then use it.
+     * If the object has the getter method for the attribute then it is used.
      *
      * @param string $name
      * @return mixed
