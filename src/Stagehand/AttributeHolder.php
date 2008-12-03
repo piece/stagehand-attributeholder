@@ -82,12 +82,18 @@ class AttributeHolder
 
     /**
      * Sets an attribute for the object.
+     * If the object has a specific setter method then uses that.
      *
      * @param string $name
      * @param mixed  $value
      */
     public function __set($name, $value)
     {
+        $setterMethodName = 'set' . ucfirst($name);
+        if (method_exists($this, $setterMethodName)) {
+            return call_user_func(array($this, $setterMethodName), $value);
+        }
+
         $this->setAttribute($name, $value);
     }
 
@@ -96,12 +102,18 @@ class AttributeHolder
 
     /**
      * Gets an attribute for the object.
+     * If the object has a specific getter method then uses that.
      *
      * @param string $name
      * @return mixed
      */
     public function __get($name)
     {
+        $getterMethodName = 'get' . ucfirst($name);
+        if (method_exists($this, $getterMethodName)) {
+            return call_user_func(array($this, $getterMethodName));
+        }
+
         return $this->getAttribute($name);
     }
 
