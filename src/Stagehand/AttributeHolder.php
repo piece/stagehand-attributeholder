@@ -209,6 +209,21 @@ abstract class AttributeHolder
         $this->_attributes = array();
     }
 
+    // }}}
+    // {{{ hold
+
+    /**
+     * Holds an attribute name for the object.
+     *
+     * @param string $name
+     */
+    public function hold($name)
+    {
+        if (!$this->hasAttribute($name)) {
+            $this->setAttribute($name, null);
+        }
+    }
+
     /**#@-*/
 
     /**#@+

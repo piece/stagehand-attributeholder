@@ -32,26 +32,27 @@
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
  * @version    SVN: $Id$
+ * @see        Stagehand\AttributeHolderTest
  * @since      File available since Release 0.1.0
  */
 
-namespace Stagehand;
+namespace Stagehand\AttributeHolderTest;
 
-use Stagehand\AttributeHolderTest\Example;
-use Stagehand\AttributeHolderTest\ExampleForHoldAttributes;
+use Stagehand\AttributeHolder;
 
-// {{{ Stagehand\AttributeHolderTest
+// {{{ Stagehand\AttributeHolderTest\ExampleForHoldAttributes
 
 /**
- * Some tests for Stagehand\AttributeHolder.
+ * A class for unit tests.
  *
  * @package    Stagehand_AttributeHolder
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License (revised)
  * @version    Release: @package_version@
+ * @see        Stagehand\AttributeHolderTest
  * @since      Class available since Release 0.1.0
  */
-class AttributeHolderTest extends \PHPUnit_Framework_TestCase
+class ExampleForHoldAttributes extends AttributeHolder
 {
 
     // {{{ properties
@@ -78,51 +79,9 @@ class AttributeHolderTest extends \PHPUnit_Framework_TestCase
      * @access public
      */
 
-    /**
-     * @test
-     */
-    public function setAttributes()
+    public function __construct()
     {
-        $example = new Example();
-        $example->foo = 'bar';
-        $example->bar = 'baz';
-
-        $this->assertEquals('bar', $example->foo);
-        $this->assertEquals('baz', $example->bar);
-    }
-
-    /**
-     * @test
-     */
-    public function setAttributesBySetterMethod()
-    {
-        $example = new Example();
-        $example->baz = 'qux';
-
-        $this->assertEquals('QUX', $example->baz);
-    }
-
-    /**
-     * @test
-     */
-    public function holdAttributeNames()
-    {
-        $example = new ExampleForHoldAttributes();
-
-        $this->assertTrue(isset($example->foo));
-        $this->assertNull($example->foo);
-
-        $this->assertFalse(isset($example->bar));
-
-        $example->bar = 'bar';
-
-        $this->assertTrue(isset($example->bar));
-        $this->assertEquals($example->bar, 'bar');
-
-        $example->hold('bar');
-
-        $this->assertTrue(isset($example->bar));
-        $this->assertEquals($example->bar, 'bar');
+        $this->hold('foo');
     }
 
     /**#@-*/
