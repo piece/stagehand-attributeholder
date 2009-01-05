@@ -37,7 +37,7 @@
 
 namespace Stagehand;
 
-use Stagehand\AttributeHolderTest\Example;
+use Stagehand\AttributeHolderTest\ExampleForSetAttributes;
 use Stagehand\AttributeHolderTest\ExampleForHoldAttributes;
 
 // {{{ Stagehand\AttributeHolderTest
@@ -83,7 +83,7 @@ class AttributeHolderTest extends \PHPUnit_Framework_TestCase
      */
     public function setAttributes()
     {
-        $example = new Example();
+        $example = new ExampleForSetAttributes();
         $example->foo = 'bar';
         $example->bar = 'baz';
 
@@ -96,7 +96,7 @@ class AttributeHolderTest extends \PHPUnit_Framework_TestCase
      */
     public function setAttributesBySetterMethod()
     {
-        $example = new Example();
+        $example = new ExampleForSetAttributes();
         $example->baz = 'qux';
 
         $this->assertEquals('QUX', $example->baz);

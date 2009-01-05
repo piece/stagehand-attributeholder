@@ -40,7 +40,7 @@ namespace Stagehand\AttributeHolderTest;
 
 use Stagehand\AttributeHolder;
 
-// {{{ Stagehand\AttributeHolderTest\Example
+// {{{ Stagehand\AttributeHolderTest\ExampleForSetAttributes
 
 /**
  * A class for unit tests.
@@ -52,7 +52,7 @@ use Stagehand\AttributeHolder;
  * @see        Stagehand\AttributeHolderTest
  * @since      Class available since Release 0.1.0
  */
-class Example extends AttributeHolder
+class ExampleForSetAttributes extends AttributeHolder
 {
 
     // {{{ properties
